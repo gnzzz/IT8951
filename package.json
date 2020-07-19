@@ -1,0 +1,22 @@
+{
+  "name": "it8951",
+  "version": "0.0.1",
+  "description": "Raspberry Pi nodejs module for e-papers controlled by IT8951",
+  "main": "dist/it8951.js",
+  "types": "dist/it8951.d.ts",
+  "scripts": {
+    "prebuild": "node-gyp rebuild",
+    "build": "tsc",
+    "test": "node --napi-modules index.js"
+  },
+  "author": "K. Johan Paulsson",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.0.23",
+    "node-addon-api": "^3.0.1",
+    "node-gyp": "^7.0.0",
+    "typescript": "^3.9.7"
+  },
+  "gypfile": true,
+  "dependencies": {}
+}
