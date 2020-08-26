@@ -1,16 +1,17 @@
-const it8951 = require('../build/Release/spi');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const it8951 = require('../build/Release/spi'); // eslint-disable-line node/no-unpublished-require
 
 enum PINS {
     CS = 8,
     READY = 24, // HRDY
-    RESET = 17
+    RESET = 17,
 }
 
 const LOW = 0x0;
 const HIGH = 0x1;
 
 export class SPI {
-    constructor(){
+    constructor() {
         it8951.init();
         this.setPin(PINS.CS, HIGH);
 
@@ -18,14 +19,14 @@ export class SPI {
         this.setPin(PINS.RESET, HIGH);
     }
 
-    public writeWords(data: Uint16Array){
+    public writeWords(data: Uint16Array) {
         this.setPin(PINS.CS, LOW);
         this.waitForReady();
         it8951.writeWords(data);
         this.setPin(PINS.CS, HIGH);
     }
 
-    public readWords(data: Uint16Array, length: number): Uint16Array{
+    public readWords(data: Uint16Array, length: number): Uint16Array {
         this.setPin(PINS.CS, LOW);
         this.waitForReady();
         const response = it8951.readWords(data, length);
@@ -33,22 +34,22 @@ export class SPI {
         return response;
     }
 
-    public writeBytes(data: Uint8Array){
+    public writeBytes(data: Uint8Array) {
         this.setPin(PINS.CS, LOW);
         this.waitForReady();
         it8951.writeBytes(data);
         this.setPin(PINS.CS, HIGH);
     }
 
-    public readPin(pin: Number): Number {
+    public readPin(pin: number): number {
         return it8951.readPin(pin);
     }
 
-    public setPin(pin: Number, value: Number){
+    public setPin(pin: number, value: number) {
         it8951.setPin(pin, value);
     }
 
-    public waitForReady(){
+    public waitForReady() {
         it8951.waitForReady();
     }
 }
