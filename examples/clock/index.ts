@@ -70,8 +70,6 @@ async function getimage(width: number, height: number): Promise<Buffer> {
     ctx.fillText(new Date().toLocaleTimeString(), width / 2, height / 2);
 
     const png = canvas.toBuffer('image/png');
-    fs.writeFileSync('image.png', png);
-
     return new Promise(resolve => {
         sharp(png)
             // .resize(width, height)
