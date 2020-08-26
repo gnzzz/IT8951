@@ -97,10 +97,11 @@ enum WAVEFORM {
 }
 
 //Endian Type
-enum ENDIAN {
+export enum ENDIAN {
     LITTLE = 0,
     BIG = 1
 }
+
 //Auto LUT
 enum AUTO_LUT {
     DIS = 0, // disabled?
@@ -169,7 +170,7 @@ export class IT8951 {
         return data[0];
     }
 
-    public writePixels(x: number, y: number, width: number, height: number, image: Buffer, bpp: PIXELS, rotate: ROTATE = ROTATE.ROTATE_0, endianism: ENDIAN = ENDIAN.LITTLE){
+    public writePixels(x: number, y: number, width: number, height: number, image: Buffer, bpp: PIXELS, rotate: ROTATE = ROTATE.ROTATE_0, endianism: ENDIAN = ENDIAN.BIG){
         this.setRegister(MCSR_REG.LISAR + 2, (this.info.imbufferadr >> 16) & 0x0000FFFF);
         this.setRegister(MCSR_REG.LISAR, this.info.imbufferadr & 0x0000FFFF);
 
