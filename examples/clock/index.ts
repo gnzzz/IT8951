@@ -3,7 +3,6 @@ import { SystemInfo } from 'it8951';
 import { PIXELS } from 'it8951';
 import { ROTATE } from 'it8951';
 import { createCanvas } from 'canvas';
-import * as fs from 'fs';
 import * as sharp from 'sharp';
 
 let screen: IT8951;
@@ -19,7 +18,7 @@ async function main() {
 }
 
 async function updateTime(screen: IT8951, info: SystemInfo, mode = 2) {
-    await screen.run();
+    screen.run();
     await screen.waitForDisplayReady();
 
     const image = await convertTo2BPP(await getimage(info.width, info.height));
@@ -33,7 +32,7 @@ async function updateTime(screen: IT8951, info: SystemInfo, mode = 2) {
         ROTATE.ROTATE_180
     );
     screen.displayArea(0, 0, info.width, info.height, mode);
-    await screen.sleep();
+    screen.sleep();
 }
 
 async function convertTo2BPP(image: Buffer) {
@@ -51,7 +50,7 @@ async function convertTo2BPP(image: Buffer) {
 
 async function cleanup() {
     keepRunning = false;
-    await screen.sleep();
+    screen.sleep();
     // eslint-disable-next-line no-process-exit
     process.exit();
 }
