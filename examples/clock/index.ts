@@ -6,8 +6,9 @@ import { createCanvas } from 'canvas';
 import * as fs from 'fs';
 import * as sharp from 'sharp';
 
+let screen: IT8951;
 async function main() {
-    let screen = new IT8951(1500);
+    screen = new IT8951(1500);
     
     const info = screen.systemInfo();
     await updateTime(screen, info, 2);
@@ -17,11 +18,13 @@ async function main() {
 }
 
 async function updateTime(screen: IT8951, info: SystemInfo, mode = 2){
+    await screen.run();
     await screen.waitForDisplayReady();
 
     let image = await convertTo2BPP(await getimage(info.width, info.height));
     screen.writePixels(0, 0, info.width, info.height, image, PIXELS.BPP2, ROTATE.ROTATE_180);
     screen.displayArea(0, 0, info.width, info.height, mode);
+    await screen.sleep();
 }
 
 async function convertTo2BPP(image: Buffer){
@@ -31,6 +34,11 @@ async function convertTo2BPP(image: Buffer){
         buffer[c++] = (image[i] & 0xF0 ) | ((image[i+1] & 0xF0) >> 2) | ((image[i+2] & 0xF0) >> 4) | ((image[i+3] & 0xF0) >> 6)
     }
     return Buffer.from(buffer);
+}
+
+async function cleanup(){
+    await screen.sleep();
+    process.exit();
 }
 
 async function getimage(width: number, height: number): Promise<Buffer>{
@@ -64,5 +72,9 @@ async function getimage(width: number, height: number): Promise<Buffer>{
     });
 }
 
+process.on('SIGINT', cleanup);
+process.on('SIGUSR1', cleanup);
+process.on('SIGUSR2', cleanup);
+process.on('uncaughtException', cleanup);
 
 main();
