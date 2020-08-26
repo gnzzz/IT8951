@@ -3,6 +3,7 @@
 
 #include <napi.h>
 #include <bcm2835.h>
+#include <unistd.h>
 
 // Pin definitions
 #define CS 				8

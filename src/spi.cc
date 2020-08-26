@@ -122,9 +122,15 @@ Napi::Value ReadPin(const Napi::CallbackInfo& info) {
 Napi::Value WaitForReady(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
-	uint8_t ulData = bcm2835_gpio_lev(READY);
-	while(ulData == 0){
-		ulData = bcm2835_gpio_lev(READY);
+	uint8_t value = bcm2835_gpio_lev(READY);
+	uint32_t breakCounter = 0;
+	while(value == 0 && breakCounter++ <= 100000){
+		usleep(100);
+		value = bcm2835_gpio_lev(READY);
+	}
+
+	if(breakCounter > 100000){
+		Napi::TypeError::New(env, "Waited for too long for ready signal.").ThrowAsJavaScriptException();
 	}
 
 	return env.Undefined();
