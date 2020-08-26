@@ -14,12 +14,12 @@
 #define PREAMBLE_READ 0x1000
 #define PREAMBLE_CMD 0x6000
 
-Napi::Value WriteBytes(const Napi::CallbackInfo& info);
-Napi::Value WriteWords(const Napi::CallbackInfo& info);
-Napi::Value ReadWords(const Napi::CallbackInfo& info);
-Napi::Value SetPin(const Napi::CallbackInfo& info);
-Napi::Value ReadPin(const Napi::CallbackInfo& info);
-Napi::Value WaitForReady(const Napi::CallbackInfo& info);
+Napi::Value writeBytes(const Napi::CallbackInfo& info);
+Napi::Value writeWords(const Napi::CallbackInfo& info);
+Napi::Value readWords(const Napi::CallbackInfo& info);
+Napi::Value setPin(const Napi::CallbackInfo& info);
+Napi::Value readPin(const Napi::CallbackInfo& info);
+Napi::Value waitForReady(const Napi::CallbackInfo& info);
 Napi::Value Initialise(const Napi::CallbackInfo& info);
 
 static Napi::Object Init(Napi::Env env, Napi::Object exports);

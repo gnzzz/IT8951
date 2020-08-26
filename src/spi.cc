@@ -1,6 +1,6 @@
 #include "spi.h"
 
-Napi::Value WriteBytes(const Napi::CallbackInfo& info) {
+Napi::Value writeBytes(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
 	if (info.Length() < 1) {
@@ -23,7 +23,7 @@ Napi::Value WriteBytes(const Napi::CallbackInfo& info) {
 	return env.Undefined();
 }
 
-Napi::Value WriteWords(const Napi::CallbackInfo& info) {
+Napi::Value writeWords(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
 	if (info.Length() < 1) {
@@ -47,7 +47,7 @@ Napi::Value WriteWords(const Napi::CallbackInfo& info) {
 	return env.Undefined();
 }
 
-Napi::Value ReadWords(const Napi::CallbackInfo& info) {
+Napi::Value readWords(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
 	if (info.Length() < 2) {
@@ -80,7 +80,7 @@ Napi::Value ReadWords(const Napi::CallbackInfo& info) {
 	return words;
 }
 
-Napi::Value SetPin(const Napi::CallbackInfo& info) {
+Napi::Value setPin(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
 	if (info.Length() < 2) {
@@ -101,7 +101,7 @@ Napi::Value SetPin(const Napi::CallbackInfo& info) {
 	return env.Undefined();
 }
 
-Napi::Value ReadPin(const Napi::CallbackInfo& info) {
+Napi::Value readPin(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
 	if (info.Length() < 1) {
@@ -119,7 +119,7 @@ Napi::Value ReadPin(const Napi::CallbackInfo& info) {
 	return Napi::Number::New(env, bcm2835_gpio_lev(pin));
 }
 
-Napi::Value WaitForReady(const Napi::CallbackInfo& info) {
+Napi::Value waitForReady(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
 	uint8_t value = bcm2835_gpio_lev(READY);
@@ -161,22 +161,22 @@ static Napi::Object Init(Napi::Env env, Napi::Object exports) {
 				Napi::Function::New(env, Initialise));
 
 	exports.Set(Napi::String::New(env, "writeWords"),
-				Napi::Function::New(env, WriteWords));
+				Napi::Function::New(env, writeWords));
 
 	exports.Set(Napi::String::New(env, "writeBytes"),
-				Napi::Function::New(env, WriteBytes));
+				Napi::Function::New(env, writeBytes));
 
 	exports.Set(Napi::String::New(env, "readWords"),
-				Napi::Function::New(env, ReadWords));
+				Napi::Function::New(env, readWords));
 
 	exports.Set(Napi::String::New(env, "waitForReady"),
-				Napi::Function::New(env, WaitForReady));
+				Napi::Function::New(env, waitForReady));
 
 	exports.Set(Napi::String::New(env, "readPin"),
-				Napi::Function::New(env, ReadPin));
+				Napi::Function::New(env, readPin));
 
 	exports.Set(Napi::String::New(env, "setPin"),
-				Napi::Function::New(env, SetPin));
+				Napi::Function::New(env, setPin));
 
 	return exports;
 }
