@@ -21,7 +21,7 @@ enum PINS {
      */
     READY = 24, // HRDY
     /**
-     * Reset pin, pull low for 
+     * Reset pin, pull low to reset controller.
      */
     RESET = 17,
 }
