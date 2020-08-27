@@ -1,7 +1,9 @@
 import { IT8951 } from 'it8951';
 import { SystemInfo } from 'it8951';
-import { PIXELS } from 'it8951';
-import { ROTATE } from 'it8951';
+import { PIXEL_PACKING } from 'it8951';
+import { IMAGE_ROTATION } from 'it8951';
+import { WAVEFORM } from 'it8951';
+import { ENDIANNESS } from 'it8951';
 import { createCanvas } from 'canvas';
 import * as sharp from 'sharp';
 
@@ -11,13 +13,13 @@ async function main() {
     screen = new IT8951(1500);
 
     const info = screen.systemInfo();
-    await updateTime(screen, info, 2);
+    await updateTime(screen, info, WAVEFORM.INIT);
     while (keepRunning) {
-        await updateTime(screen, info);
+        await updateTime(screen, info, WAVEFORM.GC16);
     }
 }
 
-async function updateTime(screen: IT8951, info: SystemInfo, mode = 2) {
+async function updateTime(screen: IT8951, info: SystemInfo, mode: WAVEFORM) {
     screen.run();
     await screen.waitForDisplayReady();
 
@@ -28,8 +30,9 @@ async function updateTime(screen: IT8951, info: SystemInfo, mode = 2) {
         info.width,
         info.height,
         image,
-        PIXELS.BPP2,
-        ROTATE.ROTATE_180
+        PIXEL_PACKING.BPP2,
+        IMAGE_ROTATION.ROTATE_180,
+        ENDIANNESS.BIG
     );
     screen.displayArea(0, 0, info.width, info.height, mode);
     screen.sleep();
@@ -40,10 +43,10 @@ async function convertTo2BPP(image: Buffer) {
     let c = 0;
     for (let i = 0; i < image.length; i += 4) {
         buffer[c++] =
-            (image[i] & 0xf0) |
-            ((image[i + 1] & 0xf0) >> 2) |
-            ((image[i + 2] & 0xf0) >> 4) |
-            ((image[i + 3] & 0xf0) >> 6);
+            (image[i] & 0xc0) |
+            ((image[i + 1] & 0xc0) >> 2) |
+            ((image[i + 2] & 0xc0) >> 4) |
+            ((image[i + 3] & 0xc0) >> 6);
     }
     return Buffer.from(buffer);
 }
