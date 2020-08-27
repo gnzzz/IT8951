@@ -46,7 +46,7 @@ There are further examples in the [examples directory](examples/).
 
 ## Documentation
 
-Full documentation found [here](docs/modules/_it8951_.md).
+Full documentation found [here](docs/classes/_it8951_.it8951.md).
 
 ## License note
 

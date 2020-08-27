@@ -1,5 +1,4 @@
 /**
- * This is the doc comment for file1.ts
  * Class to controll IT8951. Implemented based on waveshare [documentation]{@link https://www.waveshare.com/wiki/6inch_HD_e-Paper_HAT}, [specification]{@link https://www.waveshare.com/w/upload/c/c4/E-paper-mode-declaration.pdf} and [IT8951 datasheet]{@link https://www.waveshare.net/w/upload/1/18/IT8951_D_V0.2.4.3_20170728.pdf}.
  * @packageDocumentation
  */

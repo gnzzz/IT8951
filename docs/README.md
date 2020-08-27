@@ -4,11 +4,15 @@
 
 # it8951
 
-it8951 is a node.js module written in typescript for the IT8951 e-paper controller.
+it8951 is a node.js module written in typescript for the IT8951 e-paper controller. Only tested on the WaveShare e-paper HAT, but should in theory work in other situations.
+
+## Update speed
+
+The speed to update the screen is directly linked to the amount of data being transferred. If the update frequency is not quick enough then try to use a lower bits per pixel image.
 
 ## Hardware compatibility
 
-In theory, the package is compatible with any version of Raspberry Pi or similar boards with a BCM2835 chip. The package is tested on a Raspberry Pi 4.
+The package is compatible with any version of Raspberry Pi or similar boards with a BCM2835 chip and tested on a Raspberry Pi 4.
 It should be compatible with a generic IT8951 setup, but has only been tested on a [WaveShare e-paper HAT](https://www.waveshare.com/wiki/10.3inch_e-Paper_HAT_(D)).
 
 ## Examples
@@ -46,7 +50,7 @@ There are further examples in the [examples directory](examples/).
 
 ## Documentation
 
-Full documentation found [here](docs/modules/_it8951_.md).
+Full documentation found [here](docs/classes/_it8951_.it8951.md).
 
 ## License note
 
