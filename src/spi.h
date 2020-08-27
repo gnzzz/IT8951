@@ -2,7 +2,7 @@
 #define SPI_H
 
 #include <napi.h>
-#include <bcm2835.h>
+#include "bcm2835.h"
 #include <unistd.h>
 
 // Pin definitions
