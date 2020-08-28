@@ -1,0 +1,19 @@
+{
+  "name": "resolution",
+  "version": "1.0.0",
+  "description": "Renders a simple sinoidal resolution",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "it8951": "file:../.."
+  },
+  "devDependencies": {
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
