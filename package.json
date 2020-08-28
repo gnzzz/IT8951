@@ -1,8 +1,8 @@
 {
   "name": "it8951",
-  "version": "0.0.1",
-  "description": "Raspberry Pi nodejs module for e-papers controlled by IT8951",
-  "keywords": ["e-paper", "waveshare", "it8651", "bcm2853"],
+  "version": "0.1.0",
+  "description": "Raspberry Pi node.js module for e-papers controlled by IT8951",
+  "keywords": ["e-paper", "waveshare", "it8651", "bcm2853", "eink"],
   "main": "dist/it8951.js",
   "types": "dist/it8951.d.ts",
   "scripts": {
@@ -18,6 +18,10 @@
     "posttest": "npm run check"
   },
   "author": "K. Johan Paulsson",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/gnzzz/IT8951.git"
+  },
   "license": "GPL-3.0-only",
   "devDependencies": {
     "@types/node": "^14.0.23",
