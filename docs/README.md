@@ -31,7 +31,7 @@ async function displayImage(image: Buffer){
         info.width, // Image width, in this case use full screen size
         info.height, // Image width, in this case use full screen size
         image, // Image buffer
-        PIXELS.BPP8 // Bits per pixel in image
+        PIXEL_PACKING.BPP8 // Bits per pixel in image
     );
     
     screen.displayArea( // Display from image buffer
