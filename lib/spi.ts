@@ -57,9 +57,14 @@ export class SPI {
     constructor() {
         it8951.init();
         this.setPin(PINS.CS, PIN_VALUE.HIGH);
+        this.reset();
+    }
 
-        this.setPin(PINS.RESET, PIN_VALUE.LOW);
-        this.setPin(PINS.RESET, PIN_VALUE.HIGH);
+    /**
+     * Reset the controller.
+     */
+    public reset() {
+        return it8951.reset();
     }
 
     /**

@@ -156,6 +156,16 @@ Napi::Value Initialise(const Napi::CallbackInfo& info) {
 	return Napi::Boolean::New(env, true);
 }
 
+Napi::Value reset(const Napi::CallbackInfo& info){
+	Napi::Env env = info.Env();
+
+	bcm2835_gpio_write(RESET,LOW);
+	bcm2835_delay(100);
+	bcm2835_gpio_write(RESET,HIGH);
+
+	return env.Undefined();
+}
+
 static Napi::Object Init(Napi::Env env, Napi::Object exports) {
 	exports.Set(Napi::String::New(env, "init"),
 				Napi::Function::New(env, Initialise));
@@ -177,6 +187,9 @@ static Napi::Object Init(Napi::Env env, Napi::Object exports) {
 
 	exports.Set(Napi::String::New(env, "setPin"),
 				Napi::Function::New(env, setPin));
+
+	exports.Set(Napi::String::New(env, "reset"),
+				Napi::Function::New(env, reset));
 
 	return exports;
 }

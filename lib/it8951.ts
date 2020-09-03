@@ -614,4 +614,11 @@ export class IT8951 {
             }, 10);
         });
     }
+
+    /**
+     * Resets the controller.
+     */
+    public reset() {
+        return this.spi.reset();
+    }
 }

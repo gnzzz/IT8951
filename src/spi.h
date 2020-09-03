@@ -20,6 +20,7 @@ Napi::Value readWords(const Napi::CallbackInfo& info);
 Napi::Value setPin(const Napi::CallbackInfo& info);
 Napi::Value readPin(const Napi::CallbackInfo& info);
 Napi::Value waitForReady(const Napi::CallbackInfo& info);
+Napi::Value reset(const Napi::CallbackInfo& info);
 Napi::Value Initialise(const Napi::CallbackInfo& info);
 
 static Napi::Object Init(Napi::Env env, Napi::Object exports);
