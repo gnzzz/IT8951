@@ -1,8 +1,4 @@
 {
   "extends": "./node_modules/gts/",
-  "ignorePatterns": [
-    "**/node_modules/*",
-    "dist/*",
-    "build/*"
-  ]
+  "ignorePatterns": ["**/node_modules/*", "dist/*", "build/*"]
 }

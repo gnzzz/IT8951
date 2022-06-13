@@ -9,11 +9,11 @@ The speed to update the screen is directly linked to the amount of data being tr
 ## Hardware compatibility
 
 The package is compatible with any version of Raspberry Pi or similar boards with a BCM2835 chip and tested on a Raspberry Pi 4.
-It should be compatible with a generic IT8951 setup, but has only been tested on a [WaveShare e-paper HAT](https://www.waveshare.com/wiki/10.3inch_e-Paper_HAT_(D)).
+It should be compatible with a generic IT8951 setup, but has only been tested on a [WaveShare e-paper HAT](<https://www.waveshare.com/wiki/10.3inch_e-Paper_HAT_(D)>).
 
 ## Examples
 
-Displaying an image on the screen requires you to first have written the image to the buffer. In general it's also a good idea to put the display to sleep after you're done as long term usage in the active power state can damage the screen. 
+Displaying an image on the screen requires you to first have written the image to the buffer. In general it's also a good idea to put the display to sleep after you're done as long term usage in the active power state can damage the screen.
 
 ```
 async function displayImage(image: Buffer){
@@ -29,7 +29,7 @@ async function displayImage(image: Buffer){
         image, // Image buffer
         PIXEL_PACKING.BPP8 // Bits per pixel in image
     );
-    
+
     screen.displayArea( // Display from image buffer
         0, // Top corner
         0, // Left corner
